@@ -1,8 +1,73 @@
 ---
 pipeline:
-  nova-compute:
+  cinder_controller:
+    image: plugins/docker
+    dockerfile: cinder_controller/Dockerfile
+    context: cinder_controller
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-cinder-controller
+    tag: latest
+  cinder_storage:
+    image: plugins/docker
+    dockerfile: cinder_storage/Dockerfile
+    context: cinder_storage
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-cinder-controller
+    tag: latest
+  glance:
+    image: plugins/docker
+    dockerfile: glance/Dockerfile
+    context: glance
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-glance
+    tag: latest
+  heat:
+    image: plugins/docker
+    dockerfile: heat/Dockerfile
+    context: heat
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-heat
+    tag: latest
+  horizon:
+    image: plugins/docker
+    dockerfile: horizon/Dockerfile
+    context: horizon
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-horizon
+    tag: latest
+  keystone:
+    image: plugins/docker
+    dockerfile: keystone/Dockerfile
+    context: keystone
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-keystone
+    tag: latest
+  neutron_controller:
+    image: plugins/docker
+    dockerfile: neutron_controller/Dockerfile
+    context: neutron_controller
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-neutron-controller
+    tag: latest
+  nova_service:
+    image: plugins/docker
+    dockerfile: nova_service/Dockerfile
+    context: nova_service
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-nova-service
+    tag: latest
+  nova_compute:
     image: plugins/docker
     dockerfile: nova_compute/Dockerfile
+    context: nova_compute
     secrets: [docker_username, docker_password]
     registry: registry.webhosting.rug.nl
     repo: registry.webhosting.rug.nl/hpc/openstack-nova-compute
@@ -13,8 +78,8 @@ pipeline:
     port: 25
     skip_verify: true
     from: drone@webhosting.rug.nl
-    recipients: [e.m.a.rijpkema@rug.nl, w.k.nap@rug.nl]
     #recipients: [e.m.a.rijpkema@rug.nl, w.k.nap@rug.nl]
+    recipients: [e.m.a.rijpkema@rug.nl]
     recipients_only: true
     when:
       status: [success, changed, failure]
