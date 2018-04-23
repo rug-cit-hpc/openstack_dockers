@@ -16,12 +16,17 @@ RUN set -x \
                           python-openstackclient \
     && apt-get -y clean
 
-EXPOSE 80
+
+EXPOSE 80 443
+
+COPY openstack-dashboard.conf /etc/apache2/conf-available/openstack-dashboard.conf
 
 COPY local_settings.py /etc/openstack-dashboard/local_settings.py
 
 # Add a redirect to /keystone instead of the "It works! page"
 COPY 000-default.conf /etc/apache2/sites-available
+
+COPY run.sh /etc/run.sh
 
 RUN chown -R www-data: /var/lib/openstack-dashboard/
 
@@ -29,7 +34,11 @@ RUN touch /var/log/horizon.log
 
 RUN chown www-data: /var/log/horizon.log
 
-RUN chown horizon: /var/lib/openstack-dashboard/secret_key
+RUN a2enmod ssl
+RUN a2enmod headers
+RUN a2enmod rewrite
 
-CMD apachectl -DFOREGROUND
+RUN  chown /var/lib/openstack-dashboard/secret_key horizon
+
+CMD /etc/run.sh
 
