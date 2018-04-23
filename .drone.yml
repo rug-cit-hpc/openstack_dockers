@@ -14,7 +14,7 @@ pipeline:
     context: cinder_storage
     secrets: [docker_username, docker_password]
     registry: registry.webhosting.rug.nl
-    repo: registry.webhosting.rug.nl/hpc/openstack-cinder-controller
+    repo: registry.webhosting.rug.nl/hpc/openstack-cinder-storage
     tag: latest
   glance:
     image: plugins/docker
