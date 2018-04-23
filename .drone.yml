@@ -2,7 +2,7 @@
 pipeline:
   nova-compute:
     image: plugins/docker
-    dockerfile: nova-compute/Dockerfile
+    dockerfile: nova_compute/Dockerfile
     secrets: [docker_username, docker_password]
     registry: registry.webhosting.rug.nl
     repo: registry.webhosting.rug.nl/hpc/openstack-nova-compute
