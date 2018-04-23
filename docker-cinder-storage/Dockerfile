@@ -15,7 +15,8 @@ RUN set -x \
         python-openstackclient \
         python-oslo.cache \
         lvm2 \
-        tgt \
+	python-ceph \
+        python-rbd \
 
     && apt-get -y clean
 
@@ -27,8 +28,6 @@ COPY write_conf.sh /etc/write_conf.sh
 COPY bootstrap.sh /etc/bootstrap.sh
 
 COPY run.sh /etc/run.sh
-
-COPY lvm.conf /etc/lvm/lvm.conf
 
 RUN chown root.root /etc/bootstrap.sh && chmod a+x /etc/bootstrap.sh
 RUN chown root.root /etc/run.sh && chmod a+x /etc/run.sh

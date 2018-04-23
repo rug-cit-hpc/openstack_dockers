@@ -32,12 +32,13 @@ flavor = keystone
 
 
 [glance_store]
-stores = file,http
-default_store = file
-filesystem_store_datadir = /var/lib/glance/images/
+stores = glance.store.rbd.Store
+default_store = rbd
+rbd_store_pool = images
+rbd_store_user = images
+rbd_store_ceph_conf = /etc/ceph/ceph.conf
 
 EOF
-
 
 cat << EOF > /etc/glance/glance-registry.conf
 
@@ -49,9 +50,11 @@ rpc_backend = rabbit
 connection = mysql+pymysql://$GLANCE_USER:$GLANCE_PASSWORD@$MYSQL_HOST/glance
 
 [glance_store]
-stores = file,http
-default_store = file
-filesystem_store_datadir = /var/lib/glance/images/
+stores = glance.store.rbd.Store
+default_store = rbd
+rbd_store_pool = images
+rbd_store_user = images
+rbd_store_ceph_conf = /etc/ceph/ceph.conf
 
 [keystone_authtoken]
 auth_uri = http://$KEYSTONE_HOST:5000

@@ -14,6 +14,8 @@ RUN set -x \
         python-mysqldb \
         python-openstackclient \
         python-oslo.cache \
+	python-rbd \
+	python-ceph \
     && apt-get -y clean \
     && rm -f /var/lib/glance/glance.sqlite
 

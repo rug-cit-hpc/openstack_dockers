@@ -3,7 +3,9 @@
 # Write the config files
 /etc/write_conf.sh
 # start cinder processes.
-tgtd
+cinder-volume -d &
+
+sleep 5
 
 cinder-volume -d &
 

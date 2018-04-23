@@ -4,15 +4,16 @@
 # These are to be passed to the docker container using -e
 
 cat << EOF > /etc/neutron/neutron.conf
+
 [DEFAULT]
 core_plugin = ml2
-service_plugins =
+service_plugins = router
+allow_overlapping_ips = True
 transport_url = rabbit://$RABBIT_USER:$RABBIT_PASSWORD@$MY_IP
 auth_strategy = keystone
 notify_nova_on_port_status_changes = true
 notify_nova_on_port_data_changes = true
 dhcp_agents_per_network = 2
-global_physnet_mtu = $GLOBAL_PHYSNET_MTU
 
 [agent]
 root_helper = sudo /usr/bin/neutron-rootwrap /etc/neutron/rootwrap.conf
@@ -46,11 +47,10 @@ EOF
 cat << EOF > /etc/neutron/plugins/ml2/ml2_conf.ini
 
 [ml2]
-type_drivers = flat,vlan
-tenant_network_types =
-mechanism_drivers = linuxbridge
+type_drivers = flat,vlan,vxlan
+tenant_network_types = vxlan
+mechanism_drivers = linuxbridge,l2population
 extension_drivers = port_security
-path_mtu = $GLOBAL_PHYSNET_MTU
 
 [ml2_type_vlan]
 network_vlan_ranges = provider
@@ -58,8 +58,27 @@ network_vlan_ranges = provider
 [ml2_type_flat]
 flat_networks = provider
 
+[ml2_type_vxlan]
+vni_ranges = 1:1000
+
 [securitygroup]
 enable_ipset = true
+
+EOF
+
+cat << EOF > /etc/neutron/metadata_agent.ini
+
+[DEFAULT]
+nova_metadata_ip = $MY_IP
+metadata_proxy_shared_secret = $METADATA_SECRET
+
+EOF
+
+cat << EOF > /etc/neutron/l3_agent.ini
+
+[DEFAULT]
+interface_driver = linuxbridge
+external_network_bridge =
 
 EOF
 
@@ -69,18 +88,20 @@ cat << EOF > /etc/neutron/plugins/ml2/linuxbridge_agent.ini
 physical_interface_mappings = $PHYSICAL_INTERFACE_MAPPINGS
 
 [vxlan]
-enable_vxlan = false
+enable_vxlan = True
+l2_population = True
+local_ip = $OVERLAY_IP
 
 [securitygroup]
 enable_security_group = true
-firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+firewall_driver = iptables
 
 EOF
 
-cat << EOF > /etc/neutron/metadata_agent.ini
+cat << EOF > /etc/neutron/l3_agent.ini
 
 [DEFAULT]
-nova_metadata_ip = $MY_IP
-metadata_proxy_shared_secret = $METADATA_SECRET
+interface_driver = linuxbridge
+external_network_bridge =
 
 EOF

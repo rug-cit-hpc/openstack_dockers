@@ -121,7 +121,12 @@ allow_migrate_to_same_host = True
 allow_resize_to_same_host = True
 
 [libvirt]
-virt_type=kvm
+virt_type = kvm
+images_type = rbd
+images_rbd_pool = vms
+images_rbd_ceph_conf = /etc/ceph/ceph.conf
+rbd_user = nova
+rbd_secret_uuid = b5044271-1918-4070-822c-f19ed14d7494
 
 [vnc]
 enabled = True
@@ -189,10 +194,11 @@ EOF
 
 cat << EOF > /etc/neutron/neutron.conf
 [DEFAULT]
+service_plugins = router
+allow_overlapping_ips = True
 transport_url = rabbit://$RABBIT_USER:$RABBIT_PASSWORD@$RABBIT_HOST
 auth_strategy = keystone
 core_plugin = ml2
-global_physnet_mtu = $GLOBAL_PHYSNET_MTU
 
 [keystone_authtoken]
 auth_uri = http://$KEYSTONE_HOST:5000
@@ -217,17 +223,12 @@ password = $NOVA_PASSWORD
 
 EOF
 
-cat << EOF > /etc/neutron/plugins/ml2/linuxbridge_agent.ini
 
-[linux_bridge]
-physical_interface_mappings = $PHYSICAL_INTERFACE_MAPPINGS
+cat << EOF > /etc/neutron/l3_agent.ini
 
-[vxlan]
-enable_vxlan = false
-
-[securitygroup]
-enable_security_group = true
-firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+[DEFAULT]
+interface_driver = linuxbridge
+external_network_bridge =
 
 EOF
 
@@ -251,11 +252,10 @@ EOF
 cat << EOF > /etc/neutron/plugins/ml2/ml2_conf.ini
 
 [ml2]
-type_drivers = flat,vlan
-tenant_network_types =
-mechanism_drivers = linuxbridge
+type_drivers = flat,vlan,vxlan
+tenant_network_types = vxlan
+mechanism_drivers = linuxbridge,l2population
 extension_drivers = port_security
-path_mtu = $GLOBAL_PHYSNET_MTU
 
 [ml2_type_vlan]
 network_vlan_ranges = provider
@@ -263,7 +263,19 @@ network_vlan_ranges = provider
 [ml2_type_flat]
 flat_networks = provider
 
+[ml2_type_vxlan]
+vni_ranges = 1:100
+
 [securitygroup]
 enable_ipset = true
+
+EOF
+
+cat << EOF > /etc/neutron/plugins/ml2/linuxbridge_agent.ini
+
+[vxlan]
+enable_vxlan = True
+l2_population = True
+local_ip = $OVERLAY_IP
 
 EOF

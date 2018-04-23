@@ -22,6 +22,6 @@ source /root/admin-openrc.sh
 
 # create a LVM physical volume and volume group.
 # This device should be available tpo the container
-pvcreate /dev/cinder_storage_volume
-vgcreate cinder-volumes /dev/cinder_storage_volume
+#pvcreate /dev/cinder_storage_volume
+#vgcreate cinder-volumes /dev/cinder_storage_volume
 

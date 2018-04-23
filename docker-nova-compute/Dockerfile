@@ -12,12 +12,15 @@ RUN set -x \
         python-openstackclient \
         nova-compute \
         neutron-linuxbridge-agent \
+	neutron-l3-agent \
         neutron-dhcp-agent \
         neutron-metadata-agent \
+        python-ceph \
+        python-rbd \
     && apt-get -y clean
 
 COPY write_conf.sh /etc/write_conf.sh
 
 COPY run.sh /etc/run.sh
-RUN echo hoi
+
 CMD ["/etc/run.sh"]
