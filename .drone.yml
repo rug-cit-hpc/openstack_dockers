@@ -14,6 +14,7 @@ pipeline:
     skip_verify: true
     from: drone@webhosting.rug.nl
     recipients: [e.m.a.rijpkema@rug.nl, w.k.nap@rug.nl]
+    #recipients: [e.m.a.rijpkema@rug.nl, w.k.nap@rug.nl]
     recipients_only: true
     when:
       status: [success, changed, failure]
