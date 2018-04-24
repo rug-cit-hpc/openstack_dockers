@@ -1,0 +1,154 @@
+---
+# When the issue below is resolved, we can build the
+# image that was actually changed.
+# https://github.com/drone/drone/issues/1021
+
+pipeline:
+  cinder_controller:
+    image: plugins/docker
+    dockerfile: cinder_controller/Dockerfile
+    context: cinder_controller
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-cinder-controller
+    tag: latest
+    when:
+      branch: master
+  cinder_storage:
+    image: plugins/docker
+    dockerfile: cinder_storage/Dockerfile
+    context: cinder_storage
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-cinder-storage
+    tag: latest
+    when:
+      branch: master
+  glance:
+    image: plugins/docker
+    dockerfile: glance/Dockerfile
+    context: glance
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-glance
+    tag: latest
+    when:
+      branch: master
+  heat:
+    image: plugins/docker
+    dockerfile: heat/Dockerfile
+    context: heat
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-heat
+    tag: latest
+    when:
+      branch: master
+  horizon:
+    image: plugins/docker
+    dockerfile: horizon/Dockerfile
+    context: horizon
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-horizon
+    tag: latest
+    when:
+      branch: master
+  keystone:
+    image: plugins/docker
+    dockerfile: keystone/Dockerfile
+    context: keystone
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-keystone
+    tag: latest
+    when:
+      branch: master
+  neutron_controller:
+    image: plugins/docker
+    dockerfile: neutron_controller/Dockerfile
+    context: neutron_controller
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-neutron-controller
+    tag: latest
+    when:
+      branch: master
+  nova_service:
+    image: plugins/docker
+    dockerfile: nova_service/Dockerfile
+    context: nova_service
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-nova-service
+    tag: latest
+    when:
+      branch: master
+  nova_compute:
+    image: plugins/docker
+    dockerfile: nova_compute/Dockerfile
+    context: nova_compute
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-nova-compute
+    tag: latest
+    when:
+      branch: master
+  neutron_controller_merlin:
+    image: plugins/docker
+    dockerfile: neutron_controller/Dockerfile
+    context: neutron_controller
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-neutron-controller-merlin
+    tag: latest
+    when:
+      branch: merlin
+  cinder_storage_merlin:
+    image: plugins/docker
+    dockerfile: cinder_storage/Dockerfile
+    context: cinder_storage
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-cinder-storage-merlin
+    tag: latest
+    when:
+      branch: merlin
+  nova_compute_merlin:
+    image: plugins/docker
+    dockerfile: nova_compute/Dockerfile
+    context: nova_compute
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-nova-compute-merlin
+    tag: latest
+    when:
+      branch: merlin
+  glance_merlin:
+    image: plugins/docker
+    dockerfile: glance/Dockerfile
+    context: glance
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-glance-merlin
+    tag: latest
+    when:
+      branch: merlin
+  notify:
+    image: drillster/drone-email
+    host: smtp.rug.nl
+    port: 25
+    skip_verify: true
+    from: drone@webhosting.rug.nl
+    # recipients: [e.m.a.rijpkema@rug.nl, w.k.nap@rug.nl]
+    recipients: [e.m.a.rijpkema@rug.nl]
+    recipients_only: true
+    when:
+      status: [success, changed, failure]
+#  slack:
+#    image: plugins/slack
+#    webhook:
+#    channel: docker
+#    when:
+#      branch: [master, merlin]
+#      status: [success, failure]
