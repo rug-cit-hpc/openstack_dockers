@@ -10,7 +10,7 @@ connection = mysql+pymysql://$CINDER_USER:$CINDER_PASSWORD@$MYSQL_HOST/cinder
 
 [DEFAULT]
 auth_strategy = keystone
-transport_url = rabbit://$RABBIT_USER:$RABBIT_PASSWORD@$MY_IP
+transport_url = rabbit://$RABBIT_USER:$RABBIT_PASSWORD@$RABBIT_HOST
 my_ip = $MY_IP
 enabled_backends = RBD-backend
 glance_api_servers = http://$GLANCE_HOST:9292
