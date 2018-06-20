@@ -279,3 +279,21 @@ l2_population = True
 local_ip = $OVERLAY_IP
 
 EOF
+
+if [ $USE_CEPH = true ]
+    then cat << EOF > /etc/ceph/ceph.conf
+[global]
+fsid = $FSID
+mon_initial_members = $MON_INITIAL_MEMBERS
+mon_host = $MON_HOST
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+
+# Your network address
+public network = $PUBLIC_NETWORK
+osd pool default size = $OSD_POOL_DEFAULT_SIZE
+
+[client.compute]
+keyring = /etc/ceph/ceph.client.compute.keyring
+EOF
