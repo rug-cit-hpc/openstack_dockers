@@ -223,15 +223,6 @@ password = $NOVA_PASSWORD
 
 EOF
 
-
-cat << EOF > /etc/neutron/l3_agent.ini
-
-[DEFAULT]
-interface_driver = linuxbridge
-external_network_bridge =
-
-EOF
-
 cat << EOF > /etc/neutron/dhcp_agent.ini
 
 [DEFAULT]
@@ -255,19 +246,9 @@ cat << EOF > /etc/neutron/plugins/ml2/ml2_conf.ini
 type_drivers = flat,vlan,vxlan
 tenant_network_types = vxlan
 mechanism_drivers = linuxbridge,l2population
-extension_drivers = port_security
-
-[ml2_type_vlan]
-network_vlan_ranges = provider
-
-[ml2_type_flat]
-flat_networks = provider
 
 [ml2_type_vxlan]
 vni_ranges = 1:100
-
-[securitygroup]
-enable_ipset = true
 
 EOF
 
