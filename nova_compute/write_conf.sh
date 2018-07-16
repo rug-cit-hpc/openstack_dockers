@@ -297,3 +297,11 @@ osd pool default size = $OSD_POOL_DEFAULT_SIZE
 [client.compute]
 keyring = /etc/ceph/ceph.client.compute.keyring
 EOF
+
+cat << EOF > /etc/neutron/l3_agent.ini
+
+[DEFAULT]
+interface_driver = linuxbridge
+external_network_bridge =
+
+EOF

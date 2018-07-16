@@ -74,13 +74,6 @@ metadata_proxy_shared_secret = $METADATA_SECRET
 
 EOF
 
-cat << EOF > /etc/neutron/l3_agent.ini
-
-[DEFAULT]
-interface_driver = linuxbridge
-external_network_bridge =
-
-EOF
 
 cat << EOF > /etc/neutron/plugins/ml2/linuxbridge_agent.ini
 
