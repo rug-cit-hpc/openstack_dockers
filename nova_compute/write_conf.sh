@@ -199,6 +199,7 @@ allow_overlapping_ips = True
 transport_url = rabbit://$RABBIT_USER:$RABBIT_PASSWORD@$RABBIT_HOST
 auth_strategy = keystone
 core_plugin = ml2
+global_physnet_mtu = $GLOBAL_PHYSNET_MTU
 
 [keystone_authtoken]
 auth_uri = http://$KEYSTONE_HOST:5000
@@ -272,6 +273,13 @@ enable_ipset = true
 EOF
 
 cat << EOF > /etc/neutron/plugins/ml2/linuxbridge_agent.ini
+
+[linux_bridge]
+physical_interface_mappings = $PHYSICAL_INTERFACE_MAPPINGS
+
+[securitygroup]
+enable_security_group = true
+firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
 
 [vxlan]
 enable_vxlan = True
