@@ -20,6 +20,7 @@ allow_migrate_to_same_host = True
 allow_resize_to_same_host = True
 firewall_driver = nova.virt.firewall.NoopFirewallDriver
 enabled_apis=osapi_compute,metadata
+security_group_api=neutron
 
 [neutron]
 url = http://$NEUTRON_CONTROLLER_HOST:9696

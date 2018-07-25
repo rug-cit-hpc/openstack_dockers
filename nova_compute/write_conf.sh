@@ -36,6 +36,7 @@ firewall_driver = nova.virt.firewall.NoopFirewallDriver
 scheduler_default_filters = AllHostsFilter
 allow_migrate_to_same_host = True
 allow_resize_to_same_host = True
+security_group_api=neutron
 
 
 [neutron]
