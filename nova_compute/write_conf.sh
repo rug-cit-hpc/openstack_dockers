@@ -124,9 +124,9 @@ allow_resize_to_same_host = True
 [libvirt]
 virt_type = kvm
 images_type = rbd
-images_rbd_pool = volumes
+images_rbd_pool = compute
 images_rbd_ceph_conf = /etc/ceph/ceph.conf
-rbd_user = volumes
+rbd_user = compute
 rbd_secret_uuid = d0db6ba7-a0c9-4da6-b0bc-aa7846325333
 
 [vnc]
