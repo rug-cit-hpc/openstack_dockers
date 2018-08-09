@@ -12,7 +12,7 @@ RUN set -x \
         python-openstackclient \
         nova-compute \
         neutron-linuxbridge-agent \
-	neutron-l3-agent \
+        neutron-l3-agent \
         neutron-dhcp-agent \
         neutron-metadata-agent \
         python-ceph \

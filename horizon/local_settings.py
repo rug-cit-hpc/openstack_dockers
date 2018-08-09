@@ -37,7 +37,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #EMAIL_HOST_PASSWORD = 'top-secret!'
 
 OPENSTACK_HOST = os.environ['KEYSTONE_HOST']
-OPENSTACK_KEYSTONE_URL = "http://%s:5000/v3" % OPENSTACK_HOST
+OPENSTACK_KEYSTONE_URL = "https://%s:5000/v3" % OPENSTACK_HOST
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = "_member_"
 
 
@@ -266,7 +266,6 @@ TIME_ZONE = "UTC"
 #    ('default', 'Default', 'themes/default'),
 #    ('material', 'Material', 'themes/material'),
 #]
-
 LOGGING = {
     'version': 1,
     # When set to True this will disable all logging except
@@ -288,11 +287,12 @@ LOGGING = {
         },
         'console': {
             # Set the level to "DEBUG" for verbose output logging.
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/var/log/horizon.log',
         },
         'operation': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'operation',
         },
@@ -516,3 +516,12 @@ ALLOWED_HOSTS = '*'
 COMPRESS_OFFLINE = True
 
 ALLOWED_PRIVATE_SUBNET_CIDR = {'ipv4': [], 'ipv6': []}
+
+WEBSSO_ENABLED = True
+
+WEBSSO_CHOICES = (
+      ("credentials", _("Keystone Credentials")),
+      ("mapped", _("Security Assertion Markup Language"))
+    )
+
+WEBSSO_INITIAL_CHOICE = "mapped"
