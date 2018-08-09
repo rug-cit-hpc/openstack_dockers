@@ -94,6 +94,16 @@ pipeline:
     tag: latest
     when:
       branch: master
+  horizon_merlin:
+    image: plugins/docker
+    dockerfile: horizon/Dockerfile
+    context: horizon
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-horizon-merlin
+    tag: latest
+    when:
+      branch: merlin
   neutron_controller_merlin:
     image: plugins/docker
     dockerfile: neutron_controller/Dockerfile
