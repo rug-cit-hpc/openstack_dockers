@@ -38,7 +38,7 @@ RUN a2enmod ssl
 RUN a2enmod headers
 RUN a2enmod rewrite
 
-RUN  chown /var/lib/openstack-dashboard/secret_key horizon
+#RUN  chown /var/lib/openstack-dashboard/secret_key horizon
 
 CMD /etc/run.sh
 
