@@ -1,0 +1,20 @@
+[
+    {
+        "local": [
+            {
+                "group_ids": "{1}",
+                "user": {
+                    "name": "{0}"
+                }
+            }
+        ],
+        "remote": [
+            {
+                "type": "REMOTE_USER"
+            },
+            {
+                "type": "openstackGroupEntitlements"
+            }
+        ]
+    }
+]
