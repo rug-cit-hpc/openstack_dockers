@@ -94,6 +94,16 @@ pipeline:
     tag: latest
     when:
       branch: master
+  keystone_merlin:
+    image: plugins/docker
+    dockerfile: keystone/Dockerfile
+    context: keystone
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-keystone-merlin
+    tag: latest
+    when:
+      branch: merlin
   horizon_merlin:
     image: plugins/docker
     dockerfile: horizon/Dockerfile
