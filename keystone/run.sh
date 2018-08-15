@@ -8,6 +8,8 @@ chmod 700 /etc/keystone/fernet-keys
 a2enmod ssl
 apachectl -DFOREGROUND &
 
+tail -f /var/log/apache2/* &
+
 chown _shibd: /etc/shibboleth/sp*.pem
 
 shibd -f -F &
