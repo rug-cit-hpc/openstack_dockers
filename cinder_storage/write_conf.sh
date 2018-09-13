@@ -30,11 +30,11 @@ password = $CINDER_PASSWORD
 lock_path = /var/lib/cinder/tmp
 
 [RBD-backend]
-volume_backend_name=RBD-backend
-rbd_pool=volumes
-rbd_user=volumes
-rbd_secret_uuid=d0db6ba7-a0c9-4da6-b0bc-aa7846325333
-volume_driver=cinder.volume.drivers.rbd.RBDDriver
-rbd_ceph_conf=/etc/ceph/ceph.conf
+volume_backend_name = RBD-backend
+rbd_pool = volumes
+rbd_user = volumes
+rbd_secret_uuid = $RBD_SECRET_UUID
+volume_driver = cinder.volume.drivers.rbd.RBDDriver
+rbd_ceph_conf = /etc/ceph/ceph.conf
 
 EOF

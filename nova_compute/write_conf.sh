@@ -127,7 +127,7 @@ images_type = rbd
 images_rbd_pool = volumes
 images_rbd_ceph_conf = /etc/ceph/ceph.conf
 rbd_user = volumes
-rbd_secret_uuid = d0db6ba7-a0c9-4da6-b0bc-aa7846325333
+rbd_secret_uuid = $RBD_SECRET_UUID
 
 
 [vnc]
