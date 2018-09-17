@@ -15,7 +15,7 @@ RUN set -x \
         python-openstackclient \
         python-oslo.cache \
         lvm2 \
-	python-ceph \
+        python-ceph \
         python-rbd \
 
     && apt-get -y clean

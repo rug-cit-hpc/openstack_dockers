@@ -15,6 +15,8 @@ RUN set -x \
         python-oslo.cache \
         cinder-api \
         cinder-scheduler \
+        python-ceph \
+        python-rbd \
     && apt-get -y clean
 
 EXPOSE 8776
