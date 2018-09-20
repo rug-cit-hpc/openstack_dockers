@@ -17,7 +17,7 @@ RUN set -x \
         neutron-metadata-agent \
         python-ceph \
         python-rbd \
-        ceph-common \ 
+        ceph-common \
     && apt-get -y clean
 
 COPY write_conf.sh /etc/write_conf.sh

@@ -17,6 +17,7 @@ RUN set -x \
         lvm2 \
         python-ceph \
         python-rbd \
+        ceph-common \
 
     && apt-get -y clean
 
