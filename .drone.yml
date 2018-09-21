@@ -104,6 +104,16 @@ pipeline:
     tag: latest
     when:
       branch: merlin
+  nova_service_merlin:
+    image: plugins/docker
+    dockerfile: nova_service/Dockerfile
+    context: nova_service
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-nova-service-merlin
+    tag: latest
+    when:
+      branch: merlin
   horizon_merlin:
     image: plugins/docker
     dockerfile: horizon/Dockerfile
