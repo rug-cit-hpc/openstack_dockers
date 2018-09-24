@@ -16,8 +16,8 @@ enabled_backends = RBD-backend
 glance_api_servers = http://$GLANCE_HOST:9292
 
 [keystone_authtoken]
-auth_uri = http://$KEYSTONE_HOST:5000
-auth_url = http://$KEYSTONE_HOST:35357
+auth_uri = https://$KEYSTONE_HOST:5000
+auth_url = https://$KEYSTONE_HOST:35357
 memcached_servers = $MEMCACHED_HOST:11211
 auth_type = password
 project_domain_name = Default

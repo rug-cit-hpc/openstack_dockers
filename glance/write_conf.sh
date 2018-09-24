@@ -9,8 +9,8 @@ cat << EOF > /etc/glance/glance-api.conf
 connection = mysql+pymysql://$GLANCE_USER:$GLANCE_PASSWORD@$MYSQL_HOST/glance
 [image_format]
 [keystone_authtoken]
-auth_uri = http://$KEYSTONE_HOST:5000
-auth_url = http://$KEYSTONE_HOST:35357
+auth_uri = https://$KEYSTONE_HOST:5000
+auth_url = https://$KEYSTONE_HOST:35357
 memcached_servers = $MEMCACHED_HOST:11211
 auth_type = password
 project_domain_name = Default
@@ -57,8 +57,8 @@ rbd_store_user = images
 rbd_store_ceph_conf = /etc/ceph/ceph.conf
 
 [keystone_authtoken]
-auth_uri = http://$KEYSTONE_HOST:5000
-auth_url = http://$KEYSTONE_HOST:35357
+auth_uri = https://$KEYSTONE_HOST:5000
+auth_url = https://$KEYSTONE_HOST:35357
 memcached_servers = $MEMCACHED_HOST:11211
 auth_type = password
 project_domain_name = Default

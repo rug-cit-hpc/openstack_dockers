@@ -24,7 +24,7 @@ security_group_api=neutron
 
 [neutron]
 url = http://$NEUTRON_CONTROLLER_HOST:9696
-auth_url = http://$KEYSTONE_HOST:35357
+auth_url = https://$KEYSTONE_HOST:35357
 auth_type = password
 project_domain_name = Default
 user_domain_name = Default
@@ -39,8 +39,8 @@ metadata_proxy_shared_secret = $METADATA_SECRET
 auth_strategy = keystone
 
 [keystone_authtoken]
-auth_uri = http://$KEYSTONE_HOST:5000
-auth_url = http://$KEYSTONE_HOST:35357
+auth_uri = https://$KEYSTONE_HOST:5000
+auth_url = https://$KEYSTONE_HOST:35357
 memcached_servers = $MEMCACHED_HOST:11211
 auth_type = password
 project_domain_name = Default
@@ -66,7 +66,7 @@ project_domain_name = Default
 project_name = service
 auth_type = password
 user_domain_name = Default
-auth_url = http://$KEYSTONE_HOST:35357/v3
+auth_url = https://$KEYSTONE_HOST:35357/v3
 username = $NOVA_PLACEMENT_USER
 password = $NOVA_PLACEMENT_PASSWORD
 

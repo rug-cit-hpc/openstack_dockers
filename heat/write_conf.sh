@@ -15,8 +15,8 @@ heat_waitcondition_server_url = http://$HEAT_HOST:8000/v1/waitcondition
 
 
 [keystone_authtoken]
-auth_uri = http://$KEYSTONE_HOST:5000
-auth_url = http://$KEYSTONE_HOST:35357
+auth_uri = https://$KEYSTONE_HOST:5000
+auth_url = https://$KEYSTONE_HOST:35357
 memcached_servers = $MEMCACHED_HOST:11211
 auth_type = password
 project_domain_name = Default
@@ -27,7 +27,7 @@ password = $HEAT_PASSWORD
 
 [trustee]
 auth_plugin = password
-auth_url = http://$KEYSTONE_HOST:35357
+auth_url = https://$KEYSTONE_HOST:35357
 username = $HEAT_USER
 password = $HEAT_PASSWORD
 user_domain_name = Default

@@ -41,7 +41,7 @@ security_group_api=neutron
 
 [neutron]
 url = http://$NEUTRON_CONTROLLER_HOST:9696
-auth_url = http://$KEYSTONE_HOST:35357
+auth_url = https://$KEYSTONE_HOST:35357
 auth_type = password
 project_domain_name = Default
 user_domain_name = Default
@@ -66,8 +66,8 @@ lock_path = /var/lib/nova/tmp
 auth_strategy = keystone
 
 [keystone_authtoken]
-auth_uri = http://$KEYSTONE_HOST:5000
-auth_url = http://$KEYSTONE_HOST:35357
+auth_uri = https://$KEYSTONE_HOST:5000
+auth_url = https://$KEYSTONE_HOST:35357
 memcached_servers = $MEMCACHED_HOST:11211
 auth_type = password
 project_domain_name = Default
@@ -91,7 +91,7 @@ project_domain_name = Default
 project_name = service
 auth_type = password
 user_domain_name = Default
-auth_url = http://$KEYSTONE_HOST:35357/v3
+auth_url = https://$KEYSTONE_HOST:35357/v3
 username = $NOVA_PLACEMENT_USER
 password = $NOVA_PLACEMENT_PASSWORD
 
@@ -146,8 +146,8 @@ lock_path = /var/lib/nova/tmp
 auth_strategy = keystone
 
 [keystone_authtoken]
-auth_uri = http://$KEYSTONE_HOST:5000
-auth_url = http://$KEYSTONE_HOST:35357
+auth_uri = https://$KEYSTONE_HOST:5000
+auth_url = https://$KEYSTONE_HOST:35357
 memcached_servers = $MEMCACHED_HOST:11211
 auth_type = password
 project_domain_name = Default
@@ -171,7 +171,7 @@ project_domain_name = Default
 project_name = service
 auth_type = password
 user_domain_name = Default
-auth_url = http://$KEYSTONE_HOST:35357/v3
+auth_url = https://$KEYSTONE_HOST:35357/v3
 username = $NOVA_PLACEMENT_USER
 password = $NOVA_PLACEMENT_PASSWORD
 
@@ -180,7 +180,7 @@ api_paste_config=/etc/nova/api-paste.ini
 
 [neutron]
 url = http://$NEUTRON_CONTROLLER_HOST:9696
-auth_url = http://$KEYSTONE_HOST:35357
+auth_url = https://$KEYSTONE_HOST:35357
 auth_type = password
 project_domain_name = Default
 user_domain_name = Default
@@ -204,8 +204,8 @@ core_plugin = ml2
 global_physnet_mtu = $GLOBAL_PHYSNET_MTU
 
 [keystone_authtoken]
-auth_uri = http://$KEYSTONE_HOST:5000
-auth_url = http://$KEYSTONE_HOST:35357
+auth_uri = https://$KEYSTONE_HOST:5000
+auth_url = https://$KEYSTONE_HOST:35357
 memcached_servers = $MEMCACHED_HOST:11211
 auth_type = password
 project_domain_name = Default
@@ -215,7 +215,7 @@ username = $NEUTRON_USER
 password = $NEUTRON_PASSWORD
 
 [nova]
-auth_url = http://$KEYSTONE_HOST:35357
+auth_url = https://$KEYSTONE_HOST:35357
 auth_type = password
 project_domain_name = Default
 user_domain_name = Default

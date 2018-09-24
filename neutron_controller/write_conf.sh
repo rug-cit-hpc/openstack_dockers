@@ -22,8 +22,8 @@ root_helper = sudo /usr/bin/neutron-rootwrap /etc/neutron/rootwrap.conf
 connection = mysql+pymysql://$NEUTRON_USER:$NEUTRON_PASSWORD@mariadb/neutron
 
 [keystone_authtoken]
-auth_uri = http://$KEYSTONE_HOST:5000
-auth_url = http://$KEYSTONE_HOST:35357
+auth_uri = https://$KEYSTONE_HOST:5000
+auth_url = https://$KEYSTONE_HOST:35357
 memcached_servers = $MEMCACHED_HOST:11211
 auth_type = password
 project_domain_name = Default
@@ -33,7 +33,7 @@ username = $NEUTRON_USER
 password = $NEUTRON_PASSWORD
 
 [nova]
-auth_url = http://$KEYSTONE_HOST:35357
+auth_url = https://$KEYSTONE_HOST:35357
 auth_type = password
 project_domain_name = Default
 user_domain_name = Default
