@@ -124,6 +124,16 @@ pipeline:
     tag: latest
     when:
       branch: merlin
+  cinder_controller_merlin:
+    image: plugins/docker
+    dockerfile: cinder_controller/Dockerfile
+    context: cinder_controller
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-cinder-controller-merlin
+    tag: latest
+    when:
+      branch: mwelin
   cinder_storage_merlin:
     image: plugins/docker
     dockerfile: cinder_storage/Dockerfile
