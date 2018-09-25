@@ -38,3 +38,5 @@ volume_driver = cinder.volume.drivers.rbd.RBDDriver
 rbd_ceph_conf = /etc/ceph/ceph.conf
 
 EOF
+
+echo "172.23.59.101        merlin.hpc.rug.nl" >> /etc/hosts

@@ -79,3 +79,6 @@ rabbit_password = $RABBIT_PASSWORD
 flavor = keystone
 
 EOF
+
+echo "172.23.59.101        merlin.hpc.rug.nl" >> /etc/hosts
+
