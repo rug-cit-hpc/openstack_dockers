@@ -164,6 +164,16 @@ pipeline:
     tag: latest
     when:
       branch: merlin
+  heat_merlin:
+    image: plugins/docker
+    dockerfile: heat/Dockerfile
+    context: heat
+    secrets: [docker_username, docker_password]
+    registry: registry.webhosting.rug.nl
+    repo: registry.webhosting.rug.nl/hpc/openstack-heat-merlin
+    tag: latest
+    when:
+      branch: merlin
   notify:
     image: drillster/drone-email
     host: smtp.rug.nl
