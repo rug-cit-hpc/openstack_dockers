@@ -10,6 +10,8 @@
 
   <!-- Added for nikhef -->
   <Attribute name="openstackGroupEntitlements" id="openstackGroupEntitlements" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
+  <!-- Added after mail 18-10-2018 -->
+  <Attribute name="urn:oid:1.3.6.1.4.1.5923.1.1.1.6" id="eppn" nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
 
   <Attribute name="urn:oid:1.3.6.1.4.1.5923.1.1.1.10"     nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" id="Shib-user"/>
   <Attribute name="urn:oid:2.5.4.4"                       nameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" id="Shib-surName"/>
