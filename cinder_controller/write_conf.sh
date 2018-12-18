@@ -9,7 +9,6 @@ cat << EOF > /etc/cinder/cinder.conf
 connection = mysql+pymysql://$CINDER_USER:$CINDER_PASSWORD@$MYSQL_HOST/cinder
 
 [DEFAULT]
-storage_availability_zone="$AVAILABILITY_ZONE"
 auth_strategy = keystone
 transport_url = rabbit://$RABBIT_USER:$RABBIT_PASSWORD@$MY_IP
 my_ip = $MY_IP
