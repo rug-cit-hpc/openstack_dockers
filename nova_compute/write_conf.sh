@@ -54,7 +54,7 @@ password = $NEUTRON_PASSWORD
 enabled = True
 vncserver_listen = 0.0.0.0
 vncserver_proxyclient_address = $MY_IP
-novncproxy_base_url = http://$NOVA_CONTROLLER_HOST:6080/vnc_auto.html
+novncproxy_base_url = https://merlin.hpc.rug.nl:6080/vnc_auto.html
 
 [glance]
 api_servers = http://$GLANCE_CONTROLLER_HOST:9292

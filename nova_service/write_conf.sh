@@ -12,6 +12,8 @@ connection = mysql+pymysql://$NOVA_USER:$NOVA_PASSWORD@mariadb/nova_api
 connection = mysql+pymysql://$NOVA_USER:$NOVA_PASSWORD@mariadb/nova
 
 [DEFAULT]
+cert = /certs/merlin.hpc.rug.nl.crt
+key = /certs/merlin.hpc.rug.nl.key
 use_neutron = True
 my_ip = $MY_IP
 transport_url = rabbit://$RABBIT_USER:$RABBIT_PASSWORD@$MY_IP
