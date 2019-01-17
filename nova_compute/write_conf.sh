@@ -50,11 +50,6 @@ project_name = service
 username = $NEUTRON_USER
 password = $NEUTRON_PASSWORD
 
-[vnc]
-enabled = True
-vncserver_listen = 0.0.0.0
-vncserver_proxyclient_address = $MY_IP
-novncproxy_base_url = https://merlin.hpc.rug.nl:6080/vnc_auto.html
 
 [glance]
 api_servers = http://$GLANCE_CONTROLLER_HOST:9292
@@ -121,6 +116,12 @@ scheduler_default_filters = AllHostsFilter
 allow_migrate_to_same_host = True
 allow_resize_to_same_host = True
 
+[vnc]
+enabled = True
+vncserver_listen = 0.0.0.0
+vncserver_proxyclient_address = merlin.hpc.rug.nl
+novncproxy_base_url = https://merlin.hpc.rug.nl:6080/vnc_auto.html
+
 [libvirt]
 virt_type = kvm
 images_type = rbd
@@ -129,12 +130,6 @@ images_rbd_ceph_conf = /etc/ceph/ceph.conf
 rbd_user = volumes
 rbd_secret_uuid = $RBD_SECRET_UUID
 
-
-[vnc]
-enabled = True
-vncserver_listen = 0.0.0.0
-vncserver_proxyclient_address = $MY_IP
-novncproxy_base_url = http://$NOVA_CONTROLLER_HOST:6080/vnc_auto.html
 
 [glance]
 api_servers = http://$GLANCE_CONTROLLER_HOST:9292
