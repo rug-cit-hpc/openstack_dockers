@@ -1,3 +1,4 @@
+
 #!/bin/bash
 #
 # Generate config files from environments values.
@@ -119,7 +120,7 @@ allow_resize_to_same_host = True
 [vnc]
 enabled = True
 vncserver_listen = 0.0.0.0
-vncserver_proxyclient_address = merlin.hpc.rug.nl
+vncserver_proxyclient_address = $MY_IP
 novncproxy_base_url = https://merlin.hpc.rug.nl:6080/vnc_auto.html
 
 [libvirt]
@@ -310,5 +311,3 @@ interface_driver = linuxbridge
 external_network_bridge =
 
 EOF
-
-echo "172.23.59.101        merlin.hpc.rug.nl" >> /etc/hosts
