@@ -143,7 +143,7 @@ pipeline:
     repo: registry.webhosting.rug.nl/hpc/openstack-cinder-controller-merlin
     tag: latest
     when:
-      branch: mwelin
+      branch: merlin
   cinder_storage_merlin:
     image: plugins/docker
     dockerfile: cinder_storage/Dockerfile
