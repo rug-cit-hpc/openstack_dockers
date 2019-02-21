@@ -17,7 +17,6 @@ RUN set -x \
 
 # set admin token TODO: make this a secret
 # in volume of met env
-COPY keystone.conf /etc/keystone/keystone.conf
 
 RUN mkdir /etc/keystone/fernet-keys
 
