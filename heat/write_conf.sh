@@ -32,6 +32,8 @@ username = $HEAT_USER
 password = $HEAT_PASSWORD
 user_domain_name = Default
 
-EOF
+[heat_api]
+cert_file = /certs/merlin.hpc.rug.nl.chained.crt
+key_file = /certs/merlin.hpc.rug.nl.key
 
-echo "172.23.59.101        merlin.hpc.rug.nl" >> /etc/hosts
+EOF

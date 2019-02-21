@@ -18,8 +18,6 @@ RUN set -x \
 
 # set admin token TODO: make this a secret
 # in volume of met env
-COPY keystone.conf /etc/keystone/keystone.conf
-
 COPY apache-keystone.conf /etc/apache2/sites-available/keystone.conf
 
 COPY shibboleth2.xml /etc/shibboleth/shibboleth2.xml
