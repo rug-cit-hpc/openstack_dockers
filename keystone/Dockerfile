@@ -24,4 +24,7 @@ RUN chown keystone: /etc/keystone/fernet-keys
 
 COPY bootstrap.sh /etc/bootstrap.sh
 
-CMD apachectl -DFOREGROUND
+COPY run.sh /etc/run.sh
+
+CMD ["/etc/run.sh"]
+
