@@ -28,6 +28,9 @@ COPY sso_callback_template.html /etc/keystone/sso_callback_template.html
 
 RUN mkdir /var/run/shibboleth
 
+COPY bootstrap.sh /etc/bootstrap.sh
+COPY write_conf.sh /etc/write_conf.sh
+RUN chmod +x /etc/write_conf.sh
 COPY run.sh /etc/run.sh
 
 RUN mkdir /etc/keystone/fernet-keys
