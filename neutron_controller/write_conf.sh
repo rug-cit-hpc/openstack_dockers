@@ -13,7 +13,7 @@ transport_url = rabbit://$RABBIT_USER:$RABBIT_PASSWORD@$MY_IP
 auth_strategy = keystone
 notify_nova_on_port_status_changes = true
 notify_nova_on_port_data_changes = true
-dhcp_agents_per_network = 2
+dhcp_agents_per_network = 5
 
 [agent]
 root_helper = sudo /usr/bin/neutron-rootwrap /etc/neutron/rootwrap.conf
