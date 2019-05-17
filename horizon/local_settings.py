@@ -37,7 +37,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #EMAIL_HOST_PASSWORD = 'top-secret!'
 
 OPENSTACK_HOST = os.environ['KEYSTONE_HOST']
-OPENSTACK_KEYSTONE_URL = "https://%s:5000/v3" % OPENSTACK_HOST
+OPENSTACK_KEYSTONE_URL = "http://%s:5000/v3" % OPENSTACK_HOST
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = "_member_"
 
 

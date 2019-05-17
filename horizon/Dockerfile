@@ -17,7 +17,7 @@ RUN set -x \
     && apt-get -y clean
 
 
-EXPOSE 80 443
+EXPOSE 80 
 
 COPY openstack-dashboard.conf /etc/apache2/conf-available/openstack-dashboard.conf
 
