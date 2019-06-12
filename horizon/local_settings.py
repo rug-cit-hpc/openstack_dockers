@@ -20,6 +20,9 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 MEMCACHED_SERVER = os.environ['MEMCACHED_SERVER']
 
+# If the environment variable DISABLE_ROUTER is set to True, we will disable the router.
+ENABLE_ROUTER = not os.environ.get('DISABLE_ROUTER', 'False') in ('yes', 'True', 'true')
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
@@ -100,7 +103,7 @@ OPENSTACK_CINDER_FEATURES = {
 # services provided by neutron. Options currently available are load
 # balancer service, security groups, quotas, VPN service.
 OPENSTACK_NEUTRON_NETWORK = {
-    'enable_router': True,
+    'enable_router': ENABLE_ROUTER,
     'enable_quotas': False,
     'enable_ipv6': False,
     'enable_distributed_router': False,
